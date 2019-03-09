@@ -1,5 +1,7 @@
 <template>
-  $END$
+  <div id="auth">
+    
+  </div>
 </template>
 
 <script>
@@ -8,6 +10,12 @@
   }
 </script>
 
-<style scoped>
-
+<style lang="scss">
+#auth {
+  height: 100%;
+  background: url(../assets/images/bgc.png) no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+  flex-grow: 1;
+}
 </style>
