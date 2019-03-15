@@ -99,10 +99,10 @@ header {
       }
 
       &:hover {
-        border-bottom: 1px solid #000000;
+        border-bottom: 1px solid #424242;
 
         a {
-          color: #000000;
+          color: #424242;
         }
       }
     }
