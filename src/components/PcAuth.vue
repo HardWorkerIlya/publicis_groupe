@@ -27,14 +27,24 @@
             <label for="name">Имя</label>
           </span>
         </transition>
-        <span class="form-label">
-          <input type="text" name="login" id="login" autocomplete="off" v-model="login" :class="{ hascontent : login }" />
+        <span class="form-label" :class="{ 'has-error' : errors.has('login') }">
+          <input type="text" name="login" id="login" autocomplete="off" v-model="login" :class="{ hascontent : login }" v-validate.continues="'required'" />
           <label for="login">Логин</label>
         </span>
-        <span class="form-label">
-          <input type="password" name="password" id="password" autocomplete="off" v-model="password" :class="{ hascontent : password }" />
+        <transition enter-active-class="show-mes">
+          <div class="error-mes" v-show="errors.has('login')">
+            <div class="message">Error!</div>
+          </div>
+        </transition>
+        <span class="form-label" :class="{ 'has-error' : errors.has('password') }">
+          <input type="password" name="password" id="password" autocomplete="off" v-model="password" :class="{ hascontent : password }" v-validate.continues="'required|min:6'" />
           <label for="password">Пароль</label>
         </span>
+        <transition enter-active-class="show-mes">
+          <div class="error-mes" v-show="errors.has('password')">
+            <div class="message">Error!</div>
+          </div>
+        </transition>
         <transition
           enter-active-class="show"
           leave-active-class="hide">
@@ -43,7 +53,7 @@
             <label for="confirm">Повторите пароль</label>
           </span>
         </transition>
-        <button>{{ isSignIn ? 'Войти' : 'Регистрация' }}</button>
+        <button @click.prevent="submitForm">{{ isSignIn ? 'Войти' : 'Регистрация' }}</button>
       </form>
     </div>
   </div>
@@ -60,11 +70,20 @@
         name: null,
         confirm: null
       }
+    },
+    methods: {
+      submitForm () {
+        this.$validator.validate().then(valid => {
+          console.log(valid)
+        })
+      }
     }
   }
 </script>
 
 <style lang="scss">
+@import "../assets/partials/variables";
+
 #auth {
   display: flex;
   flex-grow: 1;
@@ -74,20 +93,17 @@
   background: url(../assets/images/bgc.png) no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
+  font-family: $--font-family;
+  font-size: 14px;
 
   .auth_panel {
     width: 50%;
     padding: 30px 20px 42px;
     background: rgba(255, 255, 255, 0.7);
     border-radius: 4px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
 
     .title {
       text-align: center;
-      font-family: 'Roboto', sans-serif;
       text-transform: uppercase;
       font-size: 22px;
       line-height: 22px;
@@ -129,11 +145,41 @@
         max-width: 375px;
         margin: 0 auto 20px;
 
-        &:nth-child(3) {
+        &.has-error {
           margin-bottom: 0;
+
+          input,
+          input:focus {
+            border-bottom: 1px solid #ff6e74;
+          }
+
+          &+ .error-mes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 375px;
+            height: 40px;
+            background-color: #FDEDED;
+            text-align: center;
+            margin: 4px auto;
+
+            .message {
+              font-weight: 300;
+              font-size: 12px;
+              color: #FF7979;
+            }
+
+            .show-mes {
+              animation: show-mes .6s ease;
+            }
+          }
         }
 
         &:nth-child(4) {
+          margin-bottom: 0;
+        }
+
+        &:nth-child(6) {
           margin-top: 20px;
         }
 
@@ -155,14 +201,19 @@
         }
 
         input {
+          font: inherit;
           display: block;
           border-radius: 4px;
           height: 44px;
           box-sizing: border-box;
           border: 1px solid #C4C4C4;
-          padding: 1em;
+          padding: 10px;
           width: 100%;
           background-color: #ffffff;
+
+          &[type='password'] {
+            font-size: 30px;
+          }
 
           &:-internal-autofill-previewed,
           &:-internal-autofill-selected {
@@ -188,7 +239,7 @@
         &.show {
           animation: show .6s ease;
 
-          &:nth-child(4) {
+          &:nth-child(6) {
             animation: margin-top .6s ease;
           }
 
@@ -204,7 +255,7 @@
         &.hide {
           animation: show .6s ease reverse;
 
-          &:nth-child(4) {
+          &:nth-child(6) {
             animation: margin-top .6s ease reverse;
           }
 
@@ -278,4 +329,15 @@
     padding: 11px;
   }
 }
+
+/*@keyframes show-mes {*/
+  /*from {*/
+    /*height: 0;*/
+    /*!*padding: 0;*!*/
+  /*}*/
+  /*to {*/
+    /*height: 40px;*/
+    /*!*padding: 11px;*!*/
+  /*}*/
+/*}*/
 </style>
