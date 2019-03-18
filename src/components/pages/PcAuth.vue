@@ -53,7 +53,7 @@
             <label for="confirm">Повторите пароль</label>
           </span>
         </transition>
-        <button @click.prevent="submitForm">{{ isSignIn ? 'Войти' : 'Регистрация' }}</button>
+        <button class="pc-button" @click.prevent="submitForm">{{ isSignIn ? 'Войти' : 'Регистрация' }}</button>
       </form>
     </div>
   </div>
@@ -273,38 +273,6 @@
 
           label {
             animation: show-label .6s ease reverse;
-          }
-        }
-      }
-
-      button {
-        display: block;
-        height: 46px;
-        width: 184px;
-        margin: 30px auto 0;
-        padding: 0;
-        text-transform: uppercase;
-        background: #86764B;
-        border-radius: 4px;
-        color: #ffffff;
-        font: inherit;
-        font-weight: bold;
-        cursor: pointer;
-
-        &:focus {
-          outline: none;
-          border: none;
-        }
-
-        &:active {
-          border: none;
-        }
-
-        &:hover {
-          background: #424242;
-
-          &:focus {
-            background: #000000;
           }
         }
       }
