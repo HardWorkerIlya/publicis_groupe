@@ -35,7 +35,6 @@ footer {
   height: 76px;
   display: flex;
   justify-content: space-between;
-  padding: 0 32px;
   align-items: center;
 
   .copyright {
@@ -65,12 +64,6 @@ footer {
         fill: #DFC800;
       }
     }
-  }
-}
-
-@media (max-width: 600px) {
-  footer {
-    padding: 0 16px;
   }
 }
 </style>

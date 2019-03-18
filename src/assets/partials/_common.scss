@@ -9,6 +9,13 @@ html, body, #app  {
   margin: 0;
   padding: 0;
 
+  header,
+  footer,
+  #people,
+  #auth {
+    padding: 0 32px;
+  }
+
   .pc-button {
     display: block;
     height: 46px;
@@ -39,5 +46,14 @@ html, body, #app  {
         background: #000000;
       }
     }
+  }
+}
+
+@media (max-width: 600px) {
+  header,
+  footer,
+  #people,
+  #auth {
+    padding: 0 16px !important;
   }
 }

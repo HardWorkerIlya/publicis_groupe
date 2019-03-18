@@ -21,6 +21,9 @@
   }
 </script>
 
-<style>
-
+<style lang="scss">
+#people {
+  display: flex;
+  flex: 1;
+}
 </style>

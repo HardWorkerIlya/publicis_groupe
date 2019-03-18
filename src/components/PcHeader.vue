@@ -93,7 +93,6 @@ header {
   justify-content: space-between;
   height: 100px;
   background-color: #ffffff;
-  padding: 0 32px;
   align-items: flex-end;
 
   #logo {
@@ -177,7 +176,6 @@ header {
 @media (max-width: 600px) {
   header {
     height: 60px;
-    padding: 0 16px;
 
     ul {
       display: block;
