@@ -67,4 +67,10 @@ footer {
     }
   }
 }
+
+@media (max-width: 600px) {
+  footer {
+    padding: 0 16px;
+  }
+}
 </style>

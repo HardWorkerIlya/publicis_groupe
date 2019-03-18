@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import PcAuth from '../components/PcAuth.vue'
+import PcAuth from '../components/pages/PcAuth.vue'
 
 Vue.use(VueRouter)
 

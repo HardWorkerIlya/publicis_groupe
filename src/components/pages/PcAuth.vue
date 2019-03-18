@@ -74,7 +74,13 @@
     methods: {
       submitForm () {
         this.$validator.validate().then(valid => {
-          console.log(valid)
+          let fieldArray = ['login', 'password', 'name', 'confirm']
+
+          if (valid) {
+            fieldArray.forEach((field) => {
+              this[field] = null
+            })
+          }
         })
       }
     }
@@ -82,15 +88,16 @@
 </script>
 
 <style lang="scss">
-@import "../assets/partials/variables";
+@import "../../assets/partials/variables";
 
 #auth {
   display: flex;
+  padding: 0 16px;
   flex-grow: 1;
   align-items: center;
   justify-content: center;
   min-height: 100%;
-  background: url(../assets/images/bgc.png) no-repeat;
+  background: url(../../assets/images/bgc.png) no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
   font-family: $--font-family;
@@ -101,6 +108,7 @@
     padding: 30px 20px 42px;
     background: rgba(255, 255, 255, 0.7);
     border-radius: 4px;
+    max-width: 550px;
 
     .title {
       text-align: center;
@@ -300,6 +308,14 @@
           }
         }
       }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  #auth {
+    .auth_panel {
+      width: 100%;
     }
   }
 }
