@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import PcAuth from '../components/pages/PcAuth.vue'
+import PcAuth from './components/pages/PcAuth'
+import PcPeople from './components/pages/PcPeople'
 
 Vue.use(VueRouter)
 
@@ -14,6 +15,10 @@ const router = new VueRouter({
     {
       path: '/auth',
       component: PcAuth
+    },
+    {
+      path: '/people',
+      component: PcPeople
     }
   ]
 })
