@@ -53,15 +53,22 @@
             <label for="confirm">Повторите пароль</label>
           </span>
         </transition>
-        <button class="pc-button" @click.prevent="submitForm">{{ isSignIn ? 'Войти' : 'Регистрация' }}</button>
+        <pc-button @pc-click="submitForm">
+          {{ isSignIn ? 'Войти' : 'Регистрация' }}
+        </pc-button>
       </form>
     </div>
   </div>
 </template>
 
 <script>
+  import PcButton from '../PcButton'
+
   export default {
-    name: "PcAuth",
+    name: 'PcAuth',
+    components: {
+      PcButton
+    },
     data () {
       return {
         isSignIn: true,
