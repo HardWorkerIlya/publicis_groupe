@@ -10,7 +10,7 @@
   "dependencies": {
     "@handsontable/vue": "^4.0.0",
     "handsontable": "^7.0.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "vee-validate": "^2.2.0",
     "vue": "^2.6.6",
     "vue-loader": "^15.7.0",
